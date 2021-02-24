@@ -1,0 +1,15 @@
+
+
+
+
+Q2. What is the role of combiner and partitioner in MapReduce?
+
+ANS. 
+    Combiner : 
+
+All the intermediate outputs are optimized by local aggregation before the shuffle/sort phase by the Combiner. The primary goal of Combiners is to save as much bandwidth as possible by minimizing the number of key/value pairs that will be shuffled across the network and provided as input to the Reducer.
+
+Partitioner : 
+
+In Hadoop, partitioning of the keys of the intermediate map output is controlled by Partitioner. Hash function, is used to derive partition. On the basis of key-value pair each map output is partitioned. Record having same key value goes into the same partition (within each mapper), and then each partition is sent to a Reducer. Partition phase takes place in between mapper and reducer.
+Default Partitioner (Hash Partitioner) computes a hash value for the key and assigns the partition based on this result
